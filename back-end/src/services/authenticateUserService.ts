@@ -1,7 +1,15 @@
 import axios from "axios"
+import { response } from "express"
 
 interface IAccessTokenResponse {
   access_token: string
+}
+
+interface IUserResponse {
+  avatar_url: string,
+  login: string,
+  id: number,
+  name: string
 }
 
 class AuthenticateUserService {
@@ -19,7 +27,13 @@ class AuthenticateUserService {
       }
     })
 
-    return IAccessTokenResponse.access_token
+    const response = await axios.get<IUserResponse>("https://api.github.com/user", {
+      headers: {
+        authorization: `Bearer ${IAccessTokenResponse.access_token}`
+      }
+    })
+    
+    return response.data
   }
 }
 
