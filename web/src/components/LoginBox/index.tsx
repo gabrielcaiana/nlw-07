@@ -2,13 +2,11 @@ import { useContext } from "react"
 import { VscGithubInverted } from "react-icons/vsc"
 import { AuthContext } from "../../context/auth"
 
-import styles from "./loginBoxWrapper.module.scss"
+import styles from "./styles.module.scss"
 
 export function LoginBox() {
 
-  const { signInUrl, user } = useContext(AuthContext)
-
-  console.log(user)
+  const { signInUrl } = useContext(AuthContext)
 
   return(
     <div className={styles.loginBoxWrapper}>

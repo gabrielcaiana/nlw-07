@@ -1,6 +1,6 @@
 import { api } from '../../services/api';
 
-import styles from './messageListWrapper.module.scss';
+import styles from './styles.module.scss';
 import logo from '../../assets/logo.svg';
 
 import { useEffect, useState } from 'react';
