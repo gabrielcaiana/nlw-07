@@ -20,7 +20,8 @@ type AuthResponse = {
 
 type authContextData = {
   user: User | null
-  signInUrl: string
+  signInUrl: string,
+  signOut: () => void
 }
 
 export const AuthContext = createContext({} as authContextData)
@@ -43,6 +44,11 @@ export function AuthProvider(props: AuthProvider) {
 
     localStorage.setItem("@nlw7:token", token)
     setUser(user)
+  }
+
+  function signOut() {
+    setUser(null)
+    localStorage.removeItem("@nlw7:token")
   }
 
   useEffect(() => {
@@ -70,7 +76,7 @@ export function AuthProvider(props: AuthProvider) {
   },[])
 
   return(
-    <AuthContext.Provider value={{ signInUrl, user }}>
+    <AuthContext.Provider value={{ signInUrl, user, signOut }}>
       {props.children}
     </AuthContext.Provider>
   )
