@@ -19,7 +19,7 @@ class CreateMessageService{
       user_id: message.user_id,
       created_At: message.created_at,
       user: {
-        user: message.user.name,
+        name: message.user.name,
         avatar_url: message.user.avatar_url
       }
     }
